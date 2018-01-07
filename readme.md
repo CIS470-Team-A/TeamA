@@ -1,3 +1,28 @@
+1.	Download and install Xampp using the default settings
+a.	This will provide the apache web server, SQL database and PHP necessary for the website
+b.	https://www.apachefriends.org/index.html 
+2.	Download and install Composer using the default settings
+a.	Composer is used to install and update the project dependencies
+b.	https://getcomposer.org/
+3.	Download and install Git
+a.	Git will be used to share code between developers
+b.	https://git-scm.com/downloads
+4.	Create a GitHub.com account
+a.	GitHub.com will be the central repository for the project
+b.	Provide Team Leader with GitHub username or email address to be granted access to the repository
+5.	Clone the Repository into your Xampp/htdocs folder
+6.	Open command line in your project folder
+a.	Command: composer install
+7.	Duplicate the .env.example file and rename it to .env
+a.	Update the database credentials as necessary
+b.	Remaining values should be fine
+c.	This file contains secrets and other values that are specific to your environment and should not be stored in the repository
+8.	Open command line in your project folder
+a.	Command: php artisan key:generate
+This should get the developer environment set up. Refer to the following documentation for additional details on Laravel and Git. https://laravel.com/docs/5.5
+ https://www.atlassian.com/git/tutorials 
+
+
 <p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
 
 <p align="center">
