@@ -1,3 +1,4 @@
+hello
 1.	Download and install Xampp using the default settings
 a.	This will provide the apache web server, SQL database and PHP necessary for the website
 b.	https://www.apachefriends.org/index.html 
