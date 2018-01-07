@@ -79,7 +79,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    WELCOME Team A
+                    WELCOME Team A!!!!
                 </div>
 
                 <div class="links">
