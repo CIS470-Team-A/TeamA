@@ -5,7 +5,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Senior Project</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -13,7 +13,7 @@
         <!-- Styles -->
         <style>
             html, body {
-                background-color: #fff;
+                background-color: #e6ffe6;
                 color: #636b6f;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
@@ -84,6 +84,8 @@
 
                 <div class="links">
                     <a href="https://github.com/CIS470-Team-A/TeamA">Team A GitHub</a>
+					<a href="https://laravel.com/docs/5.5">Laravel Documentation</a>
+					<a href=" https://www.atlassian.com/git/tutorials ">GitHub Tutorials</a>
                 </div>
             </div>
         </div>
