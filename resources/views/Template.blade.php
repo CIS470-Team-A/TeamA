@@ -19,7 +19,7 @@
         <!--- Navigation Bar --->
         <div class="Navigation">
         	<ul>
-   				<li><a href="/">Home</a></li>
+   				<li><a href="/">Home</a></li><!---Todo: update link--->
   				<li><a>Catalog</a></li>
                 <li><a href="#">Cart</a></li>
                 <li><a href="#">Login</a></li>
