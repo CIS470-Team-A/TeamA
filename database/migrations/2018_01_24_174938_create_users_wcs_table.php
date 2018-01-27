@@ -14,10 +14,13 @@ class CreateUsersWcsTable extends Migration
     public function up()
     {
         Schema::create('WCS_Users', function (Blueprint $table) {
-            $table->string('Password', 64)->unique();
-            $table->string('User_Name', 32)->unique();
-            $table->increments('id');
+            $table->engine = 'InnoDB';
+            $table->increments('Id')->unsigned;
+            $table->string('User_Name', 32);
+            $table->string('Password', 64);
             $table->timestamps();
+            $table->unique(["Id"], 'Id_UNIQUE');
+            $table->unique(["User_Name"], 'User_Name_UNIQUE');
         });
     }
 

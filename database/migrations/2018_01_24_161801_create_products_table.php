@@ -14,12 +14,17 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('Products', function (Blueprint $table) {
-            $table->integer('Catalog_num');
+            $table->engine = 'InnoDB';
+            $table->increments('Id');
+            $table->integer('Catalog_Num');
             $table->decimal('Price');
             $table->integer('Media_Id');
             $table->integer('Type_Id');
-            $table->increments('id');
             $table->timestamps();
+
+            $table->index(["Media_Id"], 'fk_Products_Media1_idx');
+
+            $table->index(["Type_Id"], 'fk_Products_Type1_idx');
         });
     }
 

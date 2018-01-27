@@ -14,12 +14,19 @@ class CreateLineItemsTable extends Migration
     public function up()
     {
         Schema::create('LineItems', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('order_id');
-            $table->integer('product_id');
-            $table->integer('quantity');
-            $table->decimal('price');
+            $table->engine = 'InnoDB';
+            $table->increments('Id');
+            $table->integer('Order_Id');
+            $table->integer('Product_Id');
+            $table->integer('Quantity');
+            $table->decimal('Price');
             $table->timestamps();
+
+            $table->index(["Product_Id"], 'fk_LineItems_Products1_idx');
+
+            $table->index(["Order_Id"], 'fk_LineItems_Order1_idx');
+
+            $table->unique(["Id"], 'Id_UNIQUE');
         });
     }
 

@@ -14,11 +14,18 @@ class CreateOrderTable extends Migration
     public function up()
     {
         Schema::create('Order', function (Blueprint $table) {
-            $table->integer('Customer_Id');
-            $table->string('Status', 45)->unique();
-            $table->string('Product_Content', 150)->unique();
-            $table->increments('id');
-            $table->timestamps();
+            $table->engine = 'InnoDB';
+            $table->increments('Id')->unsigned();
+            $table->integer('Customer_Id')->unsigned();
+            $table->string('Status', 45);
+            $table->string('Product_Content', 150);
+            $table->timestamps();            
+
+            $table->index(["Customer_Id"], 'fk_Order_Customer1_idx');
+
+            $table->unique(["Customer_Id"], 'Customer_Id_UNIQUE');
+
+
         });
     }
 

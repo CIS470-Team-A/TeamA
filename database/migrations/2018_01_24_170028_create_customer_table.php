@@ -14,16 +14,23 @@ class CreateCustomerTable extends Migration
     public function up()
     {
         Schema::create('Customer', function (Blueprint $table) {
-            $table->integer('User_Id');
-            $table->string('First_Name', 25)->unique();
-            $table->string('Last_Name', 25)->unique();
-            $table->string('Address', 45)->unique();
-            $table->integer('Phone_Num')->length(10);
-            $table->string('Email', 45)->unique();
-            $table->string('City', 25)->unique();
+            $table->engine = 'InnoDB';
+            $table->increments('Id')->unsigned();
+            $table->integer('User_Id')->unsigned();
+            $table->string('First_Name', 25);
+            $table->string('Last_Name', 25);
+            $table->string('Address', 45);
+            $table->integer('Phone_Num')->unsigned();
+            $table->string('Email', 45);
+            $table->string('City', 25);
             $table->char('State', 2);
-            $table->increments('id');
             $table->timestamps();
+            
+            $table->index(["User_Id"], 'fk_Customer_User1_idx');
+
+            $table->unique(["User_Id"], 'User_Id_UNIQUE');
+            $table->unique(["Id"], 'Id_UNIQUE');
+            $table->unique(["Email"], 'Email_UNIQUE');
         });
     }
 

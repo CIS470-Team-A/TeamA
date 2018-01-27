@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreatePaymentTypeTable extends Migration
+class CreateUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,12 @@ class CreatePaymentTypeTable extends Migration
      */
     public function up()
     {
-        Schema::create('PaymentType', function (Blueprint $table) {
-            $table->engine = 'InnoDB';
-            $table->increments('Id');
-            $table->char('Bill_Existing', 1)->nullable();
-            $table->char('On_Delivery', 1)->nullable();
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('email', 100)->unique();
+            $table->string('password');
+            $table->rememberToken();
             $table->timestamps();
         });
     }
@@ -29,6 +30,6 @@ class CreatePaymentTypeTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('PaymentType');
+        Schema::dropIfExists('users');
     }
 }

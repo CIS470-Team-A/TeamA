@@ -14,11 +14,15 @@ class CreateMediaTable extends Migration
     public function up()
     {
         Schema::create('Media', function (Blueprint $table) {
-            $table->char('Clothing');
-            $table->char('Plaque');
-            $table->char('trophy');
-            $table->increments('id');
+            $table->engine = 'InnoDB';
+            $table->increments('Id');
+            $table->char('Clothing', 1)->nullable();
+            $table->char('Plaque', 1)->nullable();
+            $table->char('Trophy', 1)->nullable();
             $table->timestamps();
+
+            $table->unique(["Id"], 'Id_UNIQUE');
+            
         });
     }
 

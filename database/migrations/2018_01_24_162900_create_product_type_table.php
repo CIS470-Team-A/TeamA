@@ -14,10 +14,14 @@ class CreateProductTypeTable extends Migration
     public function up()
     {
         Schema::create('ProductType', function (Blueprint $table) {
-            $table->char('Print');
-            $table->char('Engraving');
-            $table->increments('id');
-            $table->timestamps();
+            $table->engine = 'InnoDB';
+            $table->increments('Id');
+            $table->char('Engraving', 1)->nullable();
+            $table->char('Print', 1)->nullable();
+            $table->timestamps();            
+            
+            $table->unique(["Id"], 'Id_UNIQUE');
+            
         });
     }
 

@@ -14,17 +14,25 @@ class CreateEmployeeTable extends Migration
     public function up()
     {
         Schema::create('Employee', function (Blueprint $table) {
-            $table->integer('User_Id');
-            $table->string('First_Name', 25)->unique();
-            $table->string('Last_Name', 25)->unique();
-            $table->string('Address', 45)->unique();
-            $table->string('Access_Level',2);
-            $table->integer('Phone_Num')->length(10);
-            $table->string('Email', 45)->unique();
-            $table->string('City', 25)->unique();
+            $table->engine = 'InnoDB';
+            $table->increments('Id')->unsigned();
+            $table->string('First_Name', 25);
+            $table->string('Last_Name', 25);
+            $table->integer('Phone_Num');
+            $table->string('Address', 45);
+            $table->char('Access_Level', 2);
+            $table->string('Email', 45);
+            $table->integer('User_Id')->unsigned();
+            $table->string('City', 25);
             $table->char('State', 2);
-            $table->increments('id');
-            $table->timestamps();
+
+            $table->index(["User_Id"], 'fk_Employee_User_idx');
+
+            $table->unique(["User_Id"], 'User_User_Id_UNIQUE');
+
+            $table->unique(["Id"], 'Id_UNIQUE');
+
+            $table->unique(["Email"], 'Email_UNIQUE');
         });
     }
 
