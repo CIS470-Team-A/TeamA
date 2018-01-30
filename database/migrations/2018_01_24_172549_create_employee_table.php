@@ -15,7 +15,7 @@ class CreateEmployeeTable extends Migration
     {
         Schema::create('Employee', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('Id')->unsigned();
+            $table->increments('Id');
             $table->string('First_Name', 25);
             $table->string('Last_Name', 25);
             $table->integer('Phone_Num');
