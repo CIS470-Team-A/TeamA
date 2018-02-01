@@ -15,12 +15,12 @@ class CreateCustomerTable extends Migration
     {
         Schema::create('Customer', function (Blueprint $table) {
             $table->engine = 'InnoDB';
-            $table->increments('Id')->unsigned();
+            $table->increments('Id');
             $table->integer('User_Id')->unsigned();
             $table->string('First_Name', 25);
             $table->string('Last_Name', 25);
             $table->string('Address', 45);
-            $table->integer('Phone_Num')->unsigned();
+            $table->integer('Phone_Num');
             $table->string('Email', 45);
             $table->string('City', 25);
             $table->char('State', 2);

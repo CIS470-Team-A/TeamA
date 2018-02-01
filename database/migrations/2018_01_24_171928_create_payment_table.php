@@ -16,9 +16,9 @@ class CreatePaymentTable extends Migration
         Schema::create('Payment', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('Id');
-            $table->integer('Customer_Id');
-            $table->integer('Order_Id');
-            $table->integer('PaymentType_Id');
+            $table->integer('Customer_Id')->unsigned();
+            $table->integer('Order_Id')->unsigned();
+            $table->integer('PaymentType_Id')->unsigned();
             $table->decimal('Payment_Amount');
             $table->timestamps();
             $table->index(["Order_Id"], 'fk_Payment_Order1_idx');

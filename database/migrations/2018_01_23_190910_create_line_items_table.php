@@ -16,8 +16,8 @@ class CreateLineItemsTable extends Migration
         Schema::create('LineItems', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->increments('Id');
-            $table->integer('Order_Id');
-            $table->integer('Product_Id');
+            $table->integer('Order_Id')->unsigned();
+            $table->integer('Product_Id')->unsigned();
             $table->integer('Quantity');
             $table->decimal('Price');
             $table->timestamps();
