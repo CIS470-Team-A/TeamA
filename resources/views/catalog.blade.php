@@ -25,16 +25,19 @@ Please continue to update this during the development of the site.
         <!--- Navigation Bar --->
         <div class="Navigation">
         	<ul>
-   				<li><a href="/">Home</a></li>
-  				<li><a href="catalog.html">Catalog</a></li>
-                <li><a href="shoppingcart/html">Cart</a></li>
-                <li><a href="login.html">Login</a></li>
+   				<li><a href="index">Home</a></li>
+  				<li><a href="catalog">Catalog</a></li>
+                <li><a href="shoppingcart">Cart</a></li>
+                <li><a href="login">Login</a></li>
     		</ul>
     	</div>
         <!--- Main Body --->
         <div class="BodyMain">
         	<!--- Body Area code goes here--->
-        	<h1>Body</h1>
+			@foreach($products as $product)
+        	<h1>{{$product->ProductName}}</h1>
+			<p>{{$product->ProductType}}, {{$product->Media}}, ${{$product->Price}}</p>
+			@endforeach
             <!--- End Body code --->
 		</div>
         <!--- Footer --->
