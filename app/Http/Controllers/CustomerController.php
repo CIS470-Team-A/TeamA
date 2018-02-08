@@ -13,7 +13,7 @@ class CustomerController extends Controller
      */
     public function index()
     {
-        //
+        return view("home");
     }
 
     /**
@@ -34,7 +34,18 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+    /*  $input = Input::only('first_name','last_name','address''phone_number','city','state');
+      $user = new User;
+      $user->First_Name = $input['first_name'];
+      $user->Last_Name = $input['last_name'];
+      $user->Address = $input['address'];
+      $user->Phone_Number = $input['phone_number'];
+      $user->City = $input['city'];
+      $user->State = $input['state'];
+
+      $user->save();
+      */
+
     }
 
     /**
@@ -81,4 +92,5 @@ class CustomerController extends Controller
     {
         //
     }
+
 }
