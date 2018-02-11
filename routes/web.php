@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::post('/insert', "Controller@insertForm");
 Route::get('/', function () {
     return view('index');
 });
@@ -22,8 +22,12 @@ Route::resource('payment','PaymentController');
 Route::resource('user','UserController');
 Route::resource('shoppingcart','CartController');
 Route::resource('index','IndexController');
+Route::resource('register','RegisterController');
 /*Route::resource('','');*/
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', function(){
+  return view('insertForm');
+});

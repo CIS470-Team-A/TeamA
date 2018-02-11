@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\form;
 
 class HomeController extends Controller
 {
@@ -25,4 +26,12 @@ class HomeController extends Controller
     {
         return view('home');
     }
+    public function store(Request $request){
+
+      form::create(Request::all());
+
+      return "successfully submitted";
+
+    }
+
 }
