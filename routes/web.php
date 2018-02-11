@@ -20,7 +20,7 @@ Route::resource('employee','EmployeeController');
 Route::resource('order','OrderController');
 Route::resource('payment','PaymentController');
 Route::resource('user','UserController');
-Route::resource('shoppingcart','ShoppingCartController');
+Route::resource('shoppingcart','CartController');
 Route::resource('index','IndexController');
 /*Route::resource('','');*/
 
