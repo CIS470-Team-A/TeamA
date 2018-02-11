@@ -15,8 +15,8 @@ class CartController extends Controller
     public function index()
     {
 		Cart::instance('shopping')->add('20', 'Clothing Print', 1, 12);
-		
-	
+
+
         return view ("shoppingcart");
     }
 
@@ -39,7 +39,9 @@ class CartController extends Controller
     public function store(Request $request)
     {
 		foreach($request->input("row") as $rowId=>$quantity):
+      
 		Cart::update($rowId, $quantity);
+
 		endforeach;
 	}
 

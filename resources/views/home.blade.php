@@ -8,6 +8,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">Dashboard</div>
+                <a href="index">Home</a>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -30,9 +31,9 @@
 					<p>State:<br><input type="text" name="State"></p>
 					<p><input type="submit" value="add" name="submit"></p>
 					</form><br><br>
-					<form 
+					<form
                 </div>
-		
+
             </div>
         </div>
     </div>

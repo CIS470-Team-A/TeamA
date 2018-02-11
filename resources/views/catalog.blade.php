@@ -37,6 +37,7 @@ Please continue to update this during the development of the site.
 			@foreach($products as $product)
         	<h1>{{$product->ProductName}}</h1>
 			<p>{{$product->ProductType}}, {{$product->Media}}, ${{$product->Price}}</p>
+			<a href="#">Add to cart</a>
 			@endforeach
             <!--- End Body code --->
 		</div>
