@@ -14,9 +14,7 @@ class CartController extends Controller
      */
     public function index()
     {
-		Cart::instance('shopping')->add('20', 'Clothing Print', 1, 12);
-		
-	
+
         return view ("shoppingcart");
     }
 
@@ -41,6 +39,11 @@ class CartController extends Controller
 		foreach($request->input("row") as $rowId=>$quantity):
 		Cart::update($rowId, $quantity);
 		endforeach;
+			$username = \Auth::user()->email;
+		
+		\DB::table('shoppingcart')->where('identifier',$username)->delete();
+		//\Cart::store($username);
+		return(back());
 	}
 
     /**

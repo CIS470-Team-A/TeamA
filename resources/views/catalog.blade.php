@@ -33,11 +33,16 @@ Please continue to update this during the development of the site.
     	</div>
         <!--- Main Body --->
         <div class="BodyMain">
+		@if(session("flash_success"))
+		{{session("flash_success")}}
+	@endif
         	<!--- Body Area code goes here--->
+			<form method="post">    {{ csrf_field() }}
 			@foreach($products as $product)
         	<h1>{{$product->ProductName}}</h1>
-			<p>{{$product->ProductType}}, {{$product->Media}}, ${{$product->Price}}</p>
+			<p>{{$product->ProductType}}, {{$product->Media}}, ${{$product->Price}}, <button name="addCart" value="{{$product->Id}}" type="submit">Add to Cart</button></p>
 			@endforeach
+			</form>
             <!--- End Body code --->
 		</div>
         <!--- Footer --->

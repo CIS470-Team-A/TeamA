@@ -27,6 +27,7 @@ Please continue to update this during the development of the site.
         	<ul>
    				<li><a href="index">Home</a></li>
   				<li><a href="catalog">Catalog</a></li>
+				<li><a href="orders">Orders</a></li>
                 <li><a href="shoppingcart">Cart</a></li>
                 <li><a href="login">Login</a></li>
     		</ul>

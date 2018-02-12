@@ -26,6 +26,8 @@ class ProductsController extends Controller
     public function create()
     {
         //
+		dd(request()-> input());
+		
     }
 
     /**
@@ -36,7 +38,15 @@ class ProductsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+		$product = \App\Product::find(request()->input("addCart"));
+
+		\Cart::add($product->Id, $product->ProductName, 1, $product->Price);
+		$username = \Auth::user()->email;
+		
+		
+		
+		session()->flash("flash_success", "That shit in yo cart now... son");
+		return(back());
     }
 
     /**

@@ -17,6 +17,11 @@ Please continue to update this during the development of the site.
 </head>
 <!--- Body --->
 <body>
+@if (session('status'))
+                        <div class="alert alert-success">
+                            {{ session('status') }}
+                        </div>
+                    @endif
 	<div class="BodyFrame">
     	<!--- Header --->
         <div class="Header">
