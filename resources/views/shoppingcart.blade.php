@@ -53,24 +53,27 @@ Please continue to update this during the development of the site.
    	</thead>
 
    	<tbody>
-		
+
    		<?php foreach(Cart::content() as $row) :?>
-		
+
+
        		<tr>
            		<td>
                		<p><strong><?php echo $row->name; ?></strong></p>
                		<p><?php echo ($row->options->has('size') ? $row->options->size : ''); ?></p>
            		</td>
            		<td><input name="row[{{$row->rowId}}]" type="text" value="<?php echo $row->qty; ?>"></td>
+
 				<td><button type="submit">Update Cart</button>
            		<td>$<?php echo $row->price; ?></td>
            		<td>$<?php echo $row->total; ?></td>
+							
        		</tr>
 
 	   	<?php endforeach;?>
 
    	</tbody>
-   	
+
    	<tfoot>
    		<tr>
    			<td colspan="4">&nbsp;</td>

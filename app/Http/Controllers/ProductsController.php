@@ -16,6 +16,7 @@ class ProductsController extends Controller
 		$products = "pickles";
 		$products = \App\Product::all();
         return view('catalog', ['products'=> $products]);
+        
     }
 
     /**

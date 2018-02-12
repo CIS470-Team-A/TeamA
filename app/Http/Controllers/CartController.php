@@ -15,6 +15,7 @@ class CartController extends Controller
     public function index()
     {
 
+
         return view ("shoppingcart");
     }
 
@@ -37,7 +38,9 @@ class CartController extends Controller
     public function store(Request $request)
     {
 		foreach($request->input("row") as $rowId=>$quantity):
+      
 		Cart::update($rowId, $quantity);
+
 		endforeach;
 			$username = \Auth::user()->email;
 		
