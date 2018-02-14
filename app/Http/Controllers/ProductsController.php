@@ -42,11 +42,10 @@ class ProductsController extends Controller
 		$product = \App\Product::find(request()->input("addCart"));
 
 		\Cart::add($product->Id, $product->ProductName, 1, $product->Price);
-		$username = \Auth::user()->email;
 		
 		
 		
-		session()->flash("flash_success", "That shit in yo cart now... son");
+		session()->flash("flash_success", "Your Item has been added to your cart");
 		return(back());
     }
 
