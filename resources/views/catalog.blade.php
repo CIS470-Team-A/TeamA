@@ -27,6 +27,7 @@ Please continue to update this during the development of the site.
         	<ul>
    				<li><a href="index">Home</a></li>
   				<li><a href="catalog">Catalog</a></li>
+				<li><a href="orders">Orders</a></li>
                 <li><a href="shoppingcart">Cart</a></li>
                 <li><a href="login">Login</a></li>
     		</ul>
@@ -39,9 +40,12 @@ Please continue to update this during the development of the site.
         	<!--- Body Area code goes here--->
 			<form method="post">    {{ csrf_field() }}
 			@foreach($products as $product)
-        	<h1>{{$product->ProductName}}</h1>
+        	<div id="itembox">
+			<h1>{{$product->ProductName}}</h1>
 			<p>{{$product->ProductType}}, {{$product->Media}}, ${{$product->Price}}, <button name="addCart" value="{{$product->Id}}" type="submit">Add to Cart</button></p>
+			</div>
 			@endforeach
+			
 			</form>
             <!--- End Body code --->
 		</div>
