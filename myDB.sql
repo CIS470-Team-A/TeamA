@@ -135,7 +135,6 @@ CREATE TABLE `lineitems` (
 
 LOCK TABLES `lineitems` WRITE;
 /*!40000 ALTER TABLE `lineitems` DISABLE KEYS */;
-INSERT INTO `lineitems` VALUES (1,1,8,1,15.99),(2,2,9,1,25.99),(3,3,8,1,15.99),(4,4,4,1,25.99),(5,5,1,1,15.99),(6,6,10,1,59.99),(7,7,2,1,25.99),(8,8,3,1,39.99);
 /*!40000 ALTER TABLE `lineitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -249,7 +248,7 @@ CREATE TABLE `products` (
 
 LOCK TABLES `products` WRITE;
 /*!40000 ALTER TABLE `products` DISABLE KEYS */;
-INSERT INTO `products` VALUES (1,2147483647,15.99,'Trophy','Engraving','Small Trophy','Small Trophy'),(2,2147483647,25.99,'Trophy','Engraving','Medium Trophy','Medium Trophy'),(3,2147483647,39.99,'Trophy','Engraving','Large Trophy','Large Trophy'),(4,2147483647,25.99,'Plaque','Assembly','Small Plaque','Small Plaque'),(5,2147483647,59.99,'Plaque','Assembly','Large Plaque','Large Plaque'),(6,2147483647,19.99,'Clothing','Embroidery','Small Embroidery','Small Embroidery'),(7,2147483647,49.99,'Clothing','Embroidery','Large Embroidery','Large Embroidery'),(8,2147483647,15.99,'Clothing','T-Shirt','T-Shirt Printing','T-Shirt Printing'),(9,2147483647,25.99,'Clothing','Sweater','Sweater Design','Sweater Design'),(10,2147483647,59.99,'Clothing','Jersey','Jersey','Jersey');
+INSERT INTO `products` VALUES (1,2147483647,15.99,'Trophy','Engraving','Small Trophy','smtrophy.jpg'),(2,2147483647,25.99,'Trophy','Engraving','Medium Trophy','mdtrophy.jpg'),(3,2147483647,39.99,'Trophy','Engraving','Large Trophy','lgtrophy.jpg'),(4,2147483647,25.99,'Plaque','Engraving','Small Plaque','smplaque.jpg'),(5,2147483647,59.99,'Plaque','Engraving','Large Plaque','lgplaque.jpg'),(6,2147483647,35.99,'Plaque','Engraving','Medium Plaque','mdplaque.jpg'),(7,2147483647,15.99,'Clothing','Print','T-Shirt Printing','tshirt.jpg'),(8,2147483647,25.99,'Clothing','Print','Sweater Design','sweatshirt.jpg'),(9,2147483647,59.99,'Clothing','Print','Jersey','jersey.jpg');
 /*!40000 ALTER TABLE `products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,4 +324,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-11 23:46:18
+-- Dump completed on 2018-02-15 22:02:21

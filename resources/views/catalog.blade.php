@@ -42,7 +42,7 @@ Please continue to update this during the development of the site.
 			@foreach($products as $product)
         	<div id="itembox">
 			<h1>{{$product->ProductName}}</h1>
-				<img src="{{asset('graphics/PlaqueLarge.jpg')}}" />
+				<img src="{{asset("graphics/".$product->ProductPic)}}" />
 			<p>{{$product->ProductType}}, {{$product->Media}}, ${{$product->Price}}, <button name="addCart" value="{{$product->Id}}" type="submit">Add to Cart</button></p>
 			</div>
 			@endforeach
