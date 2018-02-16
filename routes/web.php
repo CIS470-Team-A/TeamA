@@ -17,7 +17,7 @@ Route::get('/', function () {
 Route::resource('catalog','ProductsController');
 Route::resource('customer','CustomerController');
 Route::resource('employee','EmployeeController');
-Route::resource('order','OrderController');
+Route::resource('orders','OrderController');
 Route::resource('payment','PaymentController');
 Route::resource('user','UserController');
 Route::resource('shoppingcart','CartController');
