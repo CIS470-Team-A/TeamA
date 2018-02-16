@@ -1,22 +1,7 @@
-<!doctype html>
-<html>
-<!--- Header --->
-<!---
-This area should be used for keeping information that may become useful to the group.
 
-Please continue to update this during the development of the site.
+@extends('layouts.app')
 
---->
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<!--- CSS --->
-<link rel="stylesheet" href="css/base.css">
-	<title>Williams Speciality Company</title>
-</head>
-<!--- Body --->
-<body>
+@section('content')
 	<div class="BodyFrame">
     	<!--- Header --->
         <div class="Header">
@@ -27,9 +12,10 @@ Please continue to update this during the development of the site.
         	<ul>
    				<li><a href="index">Home</a></li>
   				<li><a href="catalog">Catalog</a></li>
+				@if (Auth::check())
 				<li><a href="orders">Orders</a></li>
                 <li><a href="shoppingcart">Cart</a></li>
-                <li><a href="login">Login</a></li>
+				@endif
     		</ul>
     	</div>
         <!--- Main Body --->
@@ -119,5 +105,5 @@ Dicam maiorum gubergren te his. Cetero insolens disputationi ut cum, gubergren a
 		}
 		</script>
 
-</body>
-</html>
+@endsection
+
