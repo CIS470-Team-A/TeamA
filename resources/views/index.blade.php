@@ -1,45 +1,27 @@
 
-@extends('layouts.app')
+@extends('Template')
 
 @section('content')
-	<div class="BodyFrame">
-    	<!--- Header --->
-        <div class="Header">
-    		
-        </div>
-        <!--- Navigation Bar --->
-        <div class="Navigation">
-        	<ul>
-   				<li><a href="index">Home</a></li>
-  				<li><a href="catalog">Catalog</a></li>
-				@if (Auth::check())
-				<li><a href="orders">Orders</a></li>
-                <li><a href="shoppingcart">Cart</a></li>
-				@endif
-    		</ul>
-    	</div>
-        <!--- Main Body --->
-        <div class="BodyMain">
         	<!--- Body Area code goes here--->
 			<h1> Welcome to the new WSC Site</h1>
         	<!-- Slideshow container -->
 				<div class="slideshow-container">
 
 				  <!-- Full-width images with number and caption text -->
-				  <div class="mySlides fade">
+				  <div class="mySlides ">
 					
-					<img src="graphics/img1.jpg" style="width:100%">
-					
-				  </div>
-
-				  <div class="mySlides fade">
-					<img src="graphics/img2.jpg" style="width:100%">
+					<img src="{{asset('graphics/img1.jpg')}}" style="width:100%">
 					
 				  </div>
 
-				  <div class="mySlides fade">
+				  <div class="mySlides ">
+					<img src="{{asset('graphics/img2.jpg')}}" style="width:100%">
+					
+				  </div>
+
+				  <div class="mySlides ">
 					<
-					<img src="graphics/img3.jpg" style="width:100%">
+					<img src="{{asset('graphics/img3.jpg')}}" style="width:100%">
 					
 				  </div>
 
@@ -73,15 +55,7 @@ Dicam maiorum gubergren te his. Cetero insolens disputationi ut cum, gubergren a
 				</div>
             <!--- End Body code --->
 		</div>
-        <!--- Footer --->
-        <div class="Footer">
-        	<h1>Footer</h1>
-        </div>
-        <!--- Base --->
-        <div class="Base">
-        <a href="/">Home</a>&nbsp;|&nbsp;<a href="catalog.html">Catalog</a>&nbsp;|&nbsp;<a href="shoppingcart.html">Cart</a>&nbsp;|&nbsp;<a href="login.html">Login</a>
-        </div>
-    </div>
+
     <!--- End Of Working Area --->
 			<script>
 		var slideIndex = 0;
