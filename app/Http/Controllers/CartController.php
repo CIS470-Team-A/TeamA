@@ -38,14 +38,11 @@ class CartController extends Controller
     public function store(Request $request)
     {
 		foreach($request->input("row") as $rowId=>$quantity):
-      
-		Cart::update($rowId, $quantity);
+
+		Cart::update($rowId, ['qty'=>$quantity, 'options'=>['content'=>$request->input("content.$rowId")]]);
 
 		endforeach;
-			$username = \Auth::user()->email;
-		
-		\DB::table('shoppingcart')->where('identifier',$username)->delete();
-		//\Cart::store($username);
+
 		return(back());
 	}
 

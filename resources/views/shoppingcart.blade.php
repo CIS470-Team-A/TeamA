@@ -30,7 +30,7 @@
 
 				<td><button type="submit">Update Cart</button>
 
-				<td><textarea name="content" type="text" maxlength="150" placeholder="Enter your content here. Max 150 characters"></textarea></td>
+				<td><textarea name="content[{{$row->rowId}}]" type="text" maxlength="150" placeholder="Enter your content here. Max 150 characters">{{$row->options['content']}}</textarea></td>
 
            		<td>$<?php echo $row->price; ?></td>
 				<td></td>
