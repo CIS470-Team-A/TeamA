@@ -13,8 +13,14 @@ class OrderController extends Controller
      */
     public function index()
     {
-      $orders = \Auth::user()->customer->orders;
-
+      if(\Auth::user()->customer)
+      {
+        $orders =  \Auth::user()->customer->orders;
+      }
+      else
+      {
+        $orders = \Orders::get();
+      }
         return view('orders',['orders'=>$orders]);
     }
 
