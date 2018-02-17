@@ -29,9 +29,17 @@
 			  <a class="nav-item nav-link" href="catalog">Catalog</a>
 			  @if (Auth::check())
 			  <a class="nav-item nav-link" href="orders">Orders</a>
-			  <a class="nav-item nav-link disabled" href="shoppingcart">Cart</a>
+			  <a class="nav-item nav-link" href="shoppingcart">Cart</a>
 			  @endif
-			  <a class="nav-item nav-link disabled" href="login">Login</a>
+			  @if (Auth::check())
+				  <a class="nav-item nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+				  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                     {{ csrf_field() }}
+                  </form>
+			  @else
+			  <a class="nav-item nav-link" href="{{ route('login') }}">Login</a>
+		      <a class="nav-item nav-link" href="{{ route('register') }}">Register</a>
+			  @endif
 			</div>
 		  </div>
 		  <!--

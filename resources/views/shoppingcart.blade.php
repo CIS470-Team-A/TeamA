@@ -1,44 +1,6 @@
-<!doctype html>
-<html>
-<!--- Header --->
-<!---
-This area should be used for keeping information that may become useful to the group.
+@extends('Template')
 
-Please continue to update this during the development of the site.
-
---->
-<head>
-<meta charset="UTF-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-<!--- CSS --->
-<link rel="stylesheet" href="css/base.css">
-	<title>WSC Shopping Cart</title>
-</head>
-<!--- Body --->
-<body>
-@if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-	<div class="BodyFrame">
-    	<!--- Header --->
-        <div class="Header">
-    		<h1>Header</h1>
-        </div>
-        <!--- Navigation Bar --->
-        <div class="Navigation">
-        	<ul>
-   				<li><a href="index">Home</a></li>
-  				<li><a href="catalog">Catalog</a></li>
-				<li><a href="orders">Orders</a></li>
-                <li><a href="shoppingcart">Cart</a></li>
-                <li><a href="login">Login</a></li>
-    		</ul>
-    	</div>
-        <!--- Main Body --->
-        <div class="BodyMain">
+@section('content')
         	<!--- Body Area code goes here--->
 			<form method="post">
 			{{ csrf_field() }}
@@ -108,3 +70,4 @@ Please continue to update this during the development of the site.
     <!--- End Of Working Area --->
 </body>
 </html>
+@endsection
