@@ -29,7 +29,7 @@
            		<td><input name="row[{{$row->rowId}}]" type="text" value="<?php echo $row->qty; ?>"></td>
 
 				<td><button type="submit">Update Cart</button>
-				
+
 				<td><textarea name="content" type="text" maxlength="150" placeholder="Enter your content here. Max 150 characters"></textarea></td>
 
            		<td>$<?php echo $row->price; ?></td>
@@ -37,11 +37,11 @@
            		<td>$<?php echo round($row->total, 2); ?></td>
 
        		</tr>
-		</form>
-	   	<?php endforeach;?>
 
+	   	<?php endforeach;?>
+		</form>
    	</tbody>
-		<form method="post">	{{ csrf_field() }}
+		<form method="post" action="orders">	{{ csrf_field() }}
    	<tfoot>
    		<tr>
    			<td colspan="5">&nbsp;</td>

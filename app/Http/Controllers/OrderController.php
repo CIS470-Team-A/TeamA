@@ -35,6 +35,24 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
+        $order = \App\Order::create([
+          'Customer_id'=>5,//\Auth::user()->customer->id,
+          'Status'=>'Processing',
+          'Product_content'=>''
+        ]);
+        $order->save();
+
+        foreach(\Cart::content() as $row)
+        {
+          $lineItem = \App\LineItem::create([
+            'Order_Id'=>$order->id,
+            'Product_Id'=>$row->id,
+            'Quantity'=>$row->qty,
+            'Price'=>$row->price
+          ]);
+          $lineItem->save();
+        }
+        return redirect('orders');
     }
 
     /**
