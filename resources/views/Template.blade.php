@@ -15,9 +15,12 @@
 </head>
 <!--- Body --->
 <body>
-	<div class="container">
+	<div class="container BodyFrame">
     	<!--- Header --->
         <header>
+					<a href="index">
+						<img src="{{asset('graphics/header.gif')}}" style="width:100%"/>
+					</a>
     		<h1>@yield('page_title')</h1>
 
         <!--- Navigation Bar --->
