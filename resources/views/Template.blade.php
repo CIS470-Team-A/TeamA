@@ -26,9 +26,12 @@
 		  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
 			<div class="navbar-nav">
 			  <a class="nav-item nav-link active" href="index">Home <span class="sr-only">(current)</span></a>
-			  <a class="nav-item nav-link" href="#">Features</a>
-			  <a class="nav-item nav-link" href="#">Pricing</a>
-			  <a class="nav-item nav-link disabled" href="#">Disabled</a>
+			  <a class="nav-item nav-link" href="catalog">Catalog</a>
+			  @if (Auth::check())
+			  <a class="nav-item nav-link" href="orders">Orders</a>
+			  <a class="nav-item nav-link disabled" href="shoppingcart">Cart</a>
+			  @endif
+			  <a class="nav-item nav-link disabled" href="login">Login</a>
 			</div>
 		  </div>
 		  <!--
