@@ -13,7 +13,9 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('orders');
+      $orders = \Auth::user()->customer->orders;
+
+        return view('orders',['orders'=>$orders]);
     }
 
     /**
@@ -36,23 +38,28 @@ class OrderController extends Controller
     {
         //
         $order = \App\Order::create([
-          'Customer_id'=>5,//\Auth::user()->customer->id,
+          'Customer_id'=>\Auth::user()->customer->Id,
           'Status'=>'Processing',
-          
+
+
         ]);
         $order->save();
 
         foreach(\Cart::content() as $row)
         {
+
           $lineItem = \App\LineItem::create([
             'Order_Id'=>$order->id,
             'Product_Id'=>$row->id,
             'Quantity'=>$row->qty,
-            'Price'=>$row->price
-			'Product_content'=>''
+
+            'Price'=>$row->price,
+            'Content'=>$row->options['content']
+
           ]);
           $lineItem->save();
         }
+        \Cart::destroy();
         return redirect('orders');
     }
 

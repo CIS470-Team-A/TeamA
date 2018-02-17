@@ -11,4 +11,9 @@ class Order extends Model
         protected $fillable = [
             'Customer_id','Status','Product_content'
         ];
+
+        public function lineItems()
+        {
+          return $this->hasMany('\App\LineItem','Order_Id','Id');
+        }
 }

@@ -4,21 +4,32 @@
         	<!--- Body Area code goes here--->
 
             <!--- End Body code --->
-   	<tbody>
 
 
 
+<table>
        		<tr>
            		<td>Order id</td>
            		<td>Date</td>
-				<td>Order Total</td> 
+				<td>Order Total</td>
 				<td>Order status</td>
-				@if (Auth::check())
-           		<td>Close order</td>
-				@endif
+     		<td>Close order</td>
+
 
 
        		</tr>
+          @foreach($orders as $order)
+          <tr>
+            <td>{{$order->Id}}</td>
+            <td>Date</td>
+      <td>{{$order->lineItems->sum('Price')}}</td>
+      <td>{{$order->Status}}</td>
+
+            <td>Close order</td>
+          </tr>
+          @endforeach
+</table>
+
             <!--- End Body code --->
 		</div>
 
