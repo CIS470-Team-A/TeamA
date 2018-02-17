@@ -60,7 +60,7 @@
    		</tr>
 		<tr>
 			<td colspan="5">&nbsp;</td>
-			<td><button type="submit">Place Order</button>
+			<td><button onclick="window.location.href='payment'" type="button">Place Order</button>
 		</tr>
    	</tfoot>
 </table>

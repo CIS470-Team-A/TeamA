@@ -7,7 +7,6 @@
                     You are logged in!
                     <br>
                     <br>
-                          <dd><a href="#">Add Payment Options</a></dd>
                   </dl>
               	</div>
               </div>
