@@ -6,7 +6,6 @@
             <!--- End Body code --->
    	<tbody>
 
-   		<?php foreach(Cart::content() as $row) :?>
 
 
        		<tr>
