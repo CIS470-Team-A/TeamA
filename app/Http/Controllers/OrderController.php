@@ -38,7 +38,7 @@ class OrderController extends Controller
         $order = \App\Order::create([
           'Customer_id'=>5,//\Auth::user()->customer->id,
           'Status'=>'Processing',
-          'Product_content'=>''
+          
         ]);
         $order->save();
 
@@ -49,6 +49,7 @@ class OrderController extends Controller
             'Product_Id'=>$row->id,
             'Quantity'=>$row->qty,
             'Price'=>$row->price
+			'Product_content'=>''
           ]);
           $lineItem->save();
         }
