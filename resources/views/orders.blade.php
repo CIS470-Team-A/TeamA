@@ -4,6 +4,23 @@
         	<!--- Body Area code goes here--->
         	<h1>Body</h1>
             <!--- End Body code --->
+   	<tbody>
+
+   		<?php foreach(Cart::content() as $row) :?>
+
+
+       		<tr>
+           		<td>Order id</td>
+           		<td>Date</td>
+				<td>Order Total</td> 
+				<td>Order status</td>
+				@if (Auth::check())
+           		<td>Close order</td>
+				@endif
+
+
+       		</tr>
+            <!--- End Body code --->
 		</div>
         <!--- Footer --->
         <div class="Footer">
