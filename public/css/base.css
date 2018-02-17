@@ -1,5 +1,9 @@
 @charset "utf-8";
 /* CSS Document */
+html{font-size: 100%;font-family: Verdana, Arial, Helvetica, sans-serif;cursor: default;height: 100%;}
+body {background-color:#e6e6e6;}
+.BodyFrame {width:1400px; height:auto; margin-left:auto; margin-right:auto; background-color:#BFBFBF}
+
 /* Navigation Bar */
 .navbar {font-family: Verdana; font-size: 85%; color: #ffffff; border-top: 1px solid #ffffff; background: #014464;background: -moz-linear-gradient(top, #0272a7, #013953);background: -webkit-gradient(linear, 0% 0%, 0% 100%, from(#0272a7),to(#013953));text-shadow: 1px 1px 1px #000; padding:0;padding-left:20px;}
 .nav-link { color:#ffffff!important;}
