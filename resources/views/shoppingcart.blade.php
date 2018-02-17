@@ -30,7 +30,7 @@
 
 				<td><button type="submit">Update Cart</button>
 
-				<td><textarea name="content[{{$row->rowId}}]" type="text" maxlength="150" placeholder="Enter your content here. Max 150 characters">{{$row->options['content']}}</textarea></td>
+				<td><textarea name="content[{{$row->rowId}}]" type="text" maxlength="150" placeholder="Enter your content here. Max 150 characters">{{isset($row->options['content']) ? $row->options['content'] : ''}}</textarea></td>
 
            		<td>$<?php echo $row->price; ?></td>
 				<td></td>
@@ -60,7 +60,7 @@
    		</tr>
 		<tr>
 			<td colspan="5">&nbsp;</td>
-			<td><button onclick="window.location.href='payment'" type="button">Place Order</button>
+			<td><a class="btn btn-primary" href="payment">Place Order</a>
 		</tr>
    	</tfoot>
 </table>
