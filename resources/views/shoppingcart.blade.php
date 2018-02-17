@@ -7,7 +7,8 @@
        	<tr>
            	<th>Product</th>
            	<th>Qty</th>
-			<th></th>
+			<th> </th>
+			<th>Product Content</th>
            	<th>Price</th>
 			<th></th>
            	<th>Subtotal</th>
