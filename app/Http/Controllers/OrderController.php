@@ -40,6 +40,7 @@ class OrderController extends Controller
         $order = \App\Order::create([
           'Customer_id'=>\Auth::user()->customer->Id,
           'Status'=>'Processing',
+
         ]);
         $order->save();
 
