@@ -1,7 +1,5 @@
 @extends('Template')
-
 @section('content')
-        	<!--- Body Area code goes here--->
 			<form method="post">
 			{{ csrf_field() }}
         	<table>
@@ -30,7 +28,7 @@
 				<td><button type="submit">Update Cart</button>
            		<td>$<?php echo $row->price; ?></td>
            		<td>$<?php echo $row->total; ?></td>
-							
+
        		</tr>
 
 	   	<?php endforeach;?>
@@ -56,18 +54,4 @@
    	</tfoot>
 </table>
 </form>
-            <!--- End Body code --->
-		</div>
-        <!--- Footer --->
-        <div class="Footer">
-        	<h1>Footer</h1>
-        </div>
-        <!--- Base --->
-        <div class="Base">
-        <a href="/">Home</a>&nbsp;|&nbsp;<a href="catalog.html">Catalog</a>&nbsp;|&nbsp;<a href="shoppingcart.html">Cart</a>&nbsp;|&nbsp;<a href="login.html">Login</a>
-        </div>
-    </div>
-    <!--- End Of Working Area --->
-</body>
-</html>
 @endsection
