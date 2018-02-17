@@ -10,15 +10,23 @@
 		@if(session("flash_success"))
 		{{session("flash_success")}}
 	@endif
-        	<!--- Body Area code goes here--->
-			<form method="post">    {{ csrf_field() }}
-			@foreach($products as $product)
-        	<div id="itembox">
-			<h1>{{$product->ProductName}}</h1>
-				<img src="{{asset("graphics/".$product->ProductPic)}}" />
-			<p>{{$product->ProductType}}, {{$product->Media}}, ${{$product->Price}}, <button name="addCart" value="{{$product->Id}}" type="submit">Add to Cart</button></p>
-			</div>
-			@endforeach
+        	<!--- Body Area code goes here---><form method="post"> 
+			<div class="row">
+				   {{ csrf_field() }}
+				@foreach($products as $product)
+				<div class="col-6 col-md-4">
+				<p>{{$product->ProductName}}</p>
+					<p><img src="{{asset("graphics/".$product->ProductPic)}}" class=". img-fluid. max-width: 100px. max-height: 100px;"/></p>
+				<p>{{$product->ProductType}}, {{$product->Media}}, ${{$product->Price}} </p>
+				@if (Auth::check())
+				<p><button name="addCart" value="{{$product->Id}}" type="submit">Add to Cart</button></p>
+			</form>
+				@else
+			<form method="post">
+				<p><button name="login" onclick="window.location.href='{{ route('login') }}'" type="button">Login to Add to Cart</button></p>
+				@endif
+				</div>
+				@endforeach
 			
 			</form>
             <!--- End Body code --->

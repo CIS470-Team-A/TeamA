@@ -19,7 +19,7 @@
         
         <!--- Navigation Bar --->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		  <a class="navbar-brand" href="#">{{env('APP_NAME')}}</a>
+		  <a class="navbar-brand" href="home">{{env('APP_NAME')}}</a>
 		  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
 		  </button>
@@ -32,6 +32,7 @@
 			  <a class="nav-item nav-link" href="shoppingcart">Cart</a>
 			  @endif
 			  @if (Auth::check())
+				  <a class="nav-item nav-link" href="home">Account</a>
 				  <a class="nav-item nav-link" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
 				  <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                      {{ csrf_field() }}
