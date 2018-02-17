@@ -9,6 +9,7 @@
            	<th>Qty</th>
 			<th></th>
            	<th>Price</th>
+			<th></th>
            	<th>Subtotal</th>
        	</tr>
    	</thead>
@@ -21,36 +22,42 @@
        		<tr>
            		<td>
                		<p><strong><?php echo $row->name; ?></strong></p>
+					<p><img src="" /></p>
                		<p><?php echo ($row->options->has('size') ? $row->options->size : ''); ?></p>
            		</td>
            		<td><input name="row[{{$row->rowId}}]" type="text" value="<?php echo $row->qty; ?>"></td>
 
 				<td><button type="submit">Update Cart</button>
            		<td>$<?php echo $row->price; ?></td>
-           		<td>$<?php echo $row->total; ?></td>
+				<td></td>
+           		<td>$<?php echo round($row->total, 2); ?></td>
 
        		</tr>
-
+		</form>
 	   	<?php endforeach;?>
 
    	</tbody>
-
+		<form method="post">	{{ csrf_field() }}
    	<tfoot>
    		<tr>
    			<td colspan="4">&nbsp;</td>
-   			<td>Subtotal</td>
-   			<td><?php echo Cart::subtotal(); ?></td>
+   			<td><strong>Subtotal</strong></td>
+   			<td>$<?php echo Cart::subtotal(); ?></td>
    		</tr>
    		<tr>
    			<td colspan="4">&nbsp;</td>
-   			<td>Tax</td>
-   			<td><?php echo Cart::tax(); ?></td>
+   			<td><strong>Tax</strong></td>
+   			<td>$<?php echo Cart::tax(); ?></td>
    		</tr>
    		<tr>
    			<td colspan="4">&nbsp;</td>
-   			<td>Total</td>
-   			<td><?php echo Cart::total(); ?></td>
+   			<td><strong>Total</strong></td>
+   			<td>$<?php echo Cart::total(); ?></td>
    		</tr>
+		<tr>
+			<td colspan="4">&nbsp;</td>
+			<td><button type="submit">Place Order</button>
+		</tr>
    	</tfoot>
 </table>
 </form>

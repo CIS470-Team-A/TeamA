@@ -16,7 +16,7 @@
 				@foreach($products as $product)
 				<div class="col-6 col-md-4">
 				<p>{{$product->ProductName}}</p>
-					<p><img src="{{asset("graphics/".$product->ProductPic)}}" class=". img-fluid. max-width: 100px. max-height: 100px;"/></p>
+					<p><img src="{{asset("graphics/".$product->ProductPic)}}" /></p>
 				<p>{{$product->ProductType}}, {{$product->Media}}, ${{$product->Price}} </p>
 				@if (Auth::check())
 				<p><button name="addCart" value="{{$product->Id}}" type="submit">Add to Cart</button></p>
