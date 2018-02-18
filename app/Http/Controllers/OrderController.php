@@ -78,9 +78,18 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request)
     {
-        //
+     if(\Auth::user()->customer)
+      {
+        $orders =  \Auth::user()->customer->orders;
+      }
+      else
+      {
+        $orders = \App\Order::get();
+      }
+	  $order = $orders->where('Id', $request->get('id'))->first();
+        return view('orderdetails',['order'=>$order]);
     }
 
     /**
@@ -89,9 +98,21 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Request $request)
     {
         //
+		if(\Auth::user()->customer)
+      {
+        $orders =  \Auth::user()->customer->orders;
+      }
+      else
+      {
+        $orders = \App\Order::get();
+      }
+	  $order = $orders->where('Id', $request->get('id'))->first();
+	  $order->Status = "Delivered";
+	  $order->save();
+	  return back();
     }
 
     /**

@@ -7,15 +7,11 @@
 
 <label class="radio">
 <input type="radio" name="paymentType" value="1" />
-Billing
-</label>
-<label class="radio">
-<input type="radio" name="paymentType" value="2" />
-New Billing
+<strong>Billing</strong>
 </label>
 <label class="radio">
 <input type="radio" name="paymentType" value="3" />
-On Delivery (10% Down)
+<strong>Bill On Delivery</strong> (10% Down now) $<?php echo round(Cart::total()* .1, 2); ?>
 </label>
 <button type="submit" >Complete Order</button>
 </form>

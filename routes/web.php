@@ -18,6 +18,8 @@ Route::resource('catalog','ProductsController');
 Route::resource('customer','CustomerController');
 Route::resource('employee','EmployeeController');
 Route::resource('orders','OrderController');
+Route::get('/order', 'OrderController@show')->name('orderdetails');
+Route::put('/order', 'OrderController@edit')->name('orderclose');
 Route::resource('payment','PaymentController');
 Route::resource('user','UserController');
 Route::resource('shoppingcart','CartController');

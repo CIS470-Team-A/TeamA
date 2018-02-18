@@ -13,7 +13,6 @@ class ShoppingCartController extends Controller
      */
     public function index()
     {
-		Cart::instance('shopping')->add('20', 'Clothing Print', 1, 12);
         return view ("shoppingcart");
     }
 

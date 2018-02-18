@@ -34,8 +34,9 @@
 			  <a class="nav-item nav-link" href="index">Home <span class="sr-only">(current)</span></a>
 			  <a class="nav-item nav-link" href="catalog">Catalog</a>
 			  @if (Auth::check())
-			  <a class="nav-item nav-link" href="orders">Orders</a>
-			  <a class="nav-item nav-link" href="shoppingcart">Cart</a>
+			  			  <a class="nav-item nav-link" href="shoppingcart">Cart</a>
+		  <a class="nav-item nav-link" href="orders">Orders</a>
+
 			  @endif
 			  @if (Auth::check())
 				  <a class="nav-item nav-link" href="home">Account</a>
@@ -85,8 +86,8 @@
 
         </footer>
         <!--- Base --->
-        <div class="Base">
-        <a href="/">Home</a>&nbsp;|&nbsp;<a href="#l">Catalog</a>&nbsp;|&nbsp;<a href="#">Cart</a>&nbsp;|&nbsp;<a href="#">Login</a>
+        <div style="text-align:center" class="Base">
+        <a href="index">Home</a>&nbsp;|&nbsp;<a href="catalog">Catalog</a>&nbsp;|&nbsp;<a href="shoppingcart">Cart</a>&nbsp;|&nbsp;<a href="orders">Orders</a>&nbsp;|&nbsp;<a href="home">Account</a>
         </div>
     </div>
     <!--- End Of Working Area --->
