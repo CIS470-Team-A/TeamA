@@ -66,8 +66,11 @@
 			<div class="col"></div>
 			<div class="col"></div>
 			<div class="col"></div>
+			@if(\Auth::user()->customer->Address!='')
 			<div class="col"><a class="btn btn-primary" href="payment">Place Order</a>
+		@endif
 		</div>
 </div>
+
 </form>
 @endsection
