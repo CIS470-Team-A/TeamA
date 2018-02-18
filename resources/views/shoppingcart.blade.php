@@ -14,7 +14,7 @@
 	</div>
 	
 
-   		<?php foreach(Cart::content() as $row) :?>
+   		@foreach(Cart::content() as $row)
 
 
        		<div class="row">
@@ -28,7 +28,7 @@
 
        		</div>
 
-	   	<?php endforeach;?>
+	   	@endforeach
 		</form>
 
 		<form method="post" action="orders">	{{ csrf_field() }}
@@ -66,9 +66,9 @@
 			<div class="col"></div>
 			<div class="col"></div>
 			<div class="col"></div>
-			@if(\Auth::user()->customer->Address!='')
+
 			<div class="col"><a class="btn btn-primary" href="payment">Place Order</a>
-		@endif
+		
 		</div>
 </div>
 

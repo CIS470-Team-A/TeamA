@@ -21,4 +21,8 @@ class Order extends Model
         {
           return $this->hasOne('\App\Customer','Id','Customer_Id');
         }
+		public function employee()
+        {
+          return $this->hasOne('\App\Employee','Id','Employee_Id');
+        }
 }

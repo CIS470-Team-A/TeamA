@@ -43,22 +43,25 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
-
+		if(\Auth::user()->customer){
+			$customer=\Auth::user()->customer->Id;
+		}else{
+			$customer=$request->get('customer');
+		}
         $order = \App\Order::create([
-          'Customer_id'=>\Auth::user()->customer->Id,
+          'Customer_id'=>$customer,
           'Status'=>'Processing',
 		  'Date'=>date('Y-m-d H:i:s'),
-		  'Total'=>\Cart::total(),
+		  'Total'=>\Cart::total()
+		  ]);
 
-
-        ]);
         $order->save();
 
         foreach(\Cart::content() as $row)
         {
 
           $lineItem = \App\LineItem::create([
-            'Order_Id'=>$order->id,
+            'Order_Id'=>$order->Id,
             'Product_Id'=>$row->id,
             'Quantity'=>$row->qty,
 

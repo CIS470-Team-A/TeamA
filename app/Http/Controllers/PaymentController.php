@@ -13,8 +13,9 @@ class PaymentController extends Controller
      */
     public function index()
     {
+		$customers=\App\Customer::get();
 
-        return view ("payment");
+        return view ("payment", ["customers"=>$customers]);
     }
 
     /**
