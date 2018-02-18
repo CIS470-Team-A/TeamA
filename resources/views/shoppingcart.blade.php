@@ -12,7 +12,7 @@
            	<div class="col"><strong>Subtotal</strong></div>
 			<div class="col"></div>
 	</div>
-	
+
 
    		<?php foreach(Cart::content() as $row) :?>
 
@@ -66,8 +66,11 @@
 			<div class="col"></div>
 			<div class="col"></div>
 			<div class="col"></div>
-			@if(\Auth::user()->customer->Address!='')
-			<div class="col"><a class="btn btn-primary" href="payment">Place Order</a>
+				<div class="col">
+			@if($canPlaceOrder==true)
+				<a class="btn btn-primary" href="payment">Place Order</a>
+				@else
+				<p class="alert alert-danger">Complete your account and cart to place your order</p>
 		@endif
 		</div>
 </div>
