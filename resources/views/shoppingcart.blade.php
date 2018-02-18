@@ -60,7 +60,9 @@
    		</tr>
 		<tr>
 			<td colspan="5">&nbsp;</td>
+			@if(\Auth::user()->customer->Address!='')
 			<td><a class="btn btn-primary" href="payment">Place Order</a>
+				@endif
 		</tr>
    	</tfoot>
 </table>

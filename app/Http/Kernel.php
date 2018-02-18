@@ -19,7 +19,8 @@ class Kernel extends HttpKernel
         \App\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
         \App\Http\Middleware\TrustProxies::class,
-		\App\Http\Middleware\CartMiddleware::class
+		\App\Http\Middleware\CartMiddleware::class,
+    \App\Http\Middleware\LoginMiddleware::class,
     ];
 
     /**
@@ -29,6 +30,7 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
+
           			\App\Http\Middleware\CartMiddleware::class,
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
@@ -37,7 +39,7 @@ class Kernel extends HttpKernel
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \App\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-
+          \App\Http\Middleware\LoginMiddleware::class,
         ],
 
         'api' => [
