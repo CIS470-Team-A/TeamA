@@ -14,9 +14,24 @@ class CartController extends Controller
      */
     public function index()
     {
+      $canPlaceOrder=true;
+      foreach(Cart::content() as $row)
+      {
+        if (!isset($row->options['content']) || $row->options['content'] == '')
+        {
+          $canPlaceOrder=false;
+        }
+      }
+      if (Cart::content()->count() == 0)
+      {
+        $canPlaceOrder = false;
+      }
+      if (\Auth::user()->customer && \Auth::user()->customer->Address='')
+      {
+        $canPlaceOrder = false;
+      }
 
-
-        return view ("shoppingcart");
+        return view ("shoppingcart",['canPlaceOrder'=>$canPlaceOrder]);
     }
 
     /**
