@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
+    protected $primaryKey='Id';
     protected $table = 'Customer';
-	    protected $fillable = [
-        'fname','lname', 'email', 'password',
+    public $timestamps = false;
+    protected $attributes = ['Address'=>'','Phone_Num'=>0,'City'=>'','State'=>''];
+	  protected $fillable = [
+        'First_Name','Last_Name', 'Address', 'Phone_Num','User_Id','City','State'
     ];
 
     public function orders()

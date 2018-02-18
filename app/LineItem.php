@@ -11,4 +11,5 @@ class LineItem extends Model
         protected $fillable = [
           'Order_Id','Quantity','Product_Id','Price','Content'
         ];
+      
 }
