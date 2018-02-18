@@ -2,9 +2,9 @@
 
 @section('content')
         	<!--- Body Area code goes here--->
-        	<h1>Body</h1>
+<div style="text-align:center">
 <form method="post" action="orders">	{{ csrf_field() }}
-@if(\Auth::user()->employee->Id)
+@if(\Auth::user()->employee)
  <label for="exampleFormControlSelect1"><strong>Select Customer</strong></label>
     <select class="form-control" id="customerselect" name="customer">
   @foreach($customers as $customer)   
@@ -33,6 +33,5 @@
             <!--- End Body code --->
 		</div>
 
-</body>
-</html>
+
 @endsection

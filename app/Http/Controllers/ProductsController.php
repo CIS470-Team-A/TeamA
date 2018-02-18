@@ -13,7 +13,7 @@ class ProductsController extends Controller
      */
     public function index()
     {
-		$products = "pickles";
+
 		$products = \App\Product::all();
         return view('catalog', ['products'=> $products]);
         

@@ -31,6 +31,7 @@ class HomeController extends Controller
       {
         $contactDetails = \Auth::user()->employee;
       }
+	  
         return view('home',['contactDetails'=>$contactDetails]);
     }
     public function store(Request $request){
@@ -53,7 +54,7 @@ class HomeController extends Controller
       $contactDetails->fill($request->all());
       if($contactDetails->update())
       {
-    		session()->flash("flash_success", "Saved!");
+    		session()->flash("flash_success", "Your Account has been Updated");
       }
       else
 

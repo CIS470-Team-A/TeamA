@@ -1,15 +1,19 @@
 @extends('Template')
 
 @section('content')
-
+@if(session("flash_success"))
+<p class="alert alert-success">	
+		{{session("flash_success")}}
+	@endif
+		</p>
+<div style="text-align:center">
                   <div class="panel-heading"><h3>Dashboard</h3>
                     <dl>
                     You are logged in!
-                    <br>
-                    <br>
+
                   </dl>
               	</div>
-              </div>
+              
 
 
                 <div class="panel-body">
@@ -19,12 +23,6 @@
                         </div>
                     @endif
 
-
-					<br>
-					<br>
-
-        <br>
-        <br>
 					<h2>Update Your Information!</h2>
 					<form method="post">
 					{{csrf_field()}}
@@ -39,8 +37,7 @@
 
                 </div>
 
-            </div>
+            
         </div>
-    </div>
-</div>
+
 @endsection

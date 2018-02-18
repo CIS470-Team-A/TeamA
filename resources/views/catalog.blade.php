@@ -8,8 +8,10 @@
 
         <div class="BodyMain">
 		@if(session("flash_success"))
+		<p class="alert alert-success">	
 		{{session("flash_success")}}
 	@endif
+		</p>
         	<!--- Body Area code goes here---><form method="post"> 
 			<div class="row">
 				   {{ csrf_field() }}

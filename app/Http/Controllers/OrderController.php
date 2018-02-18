@@ -71,6 +71,7 @@ class OrderController extends Controller
           ]);
           $lineItem->save();
         }
+		
         \Cart::destroy();
         return redirect('orders');
     }

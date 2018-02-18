@@ -57,7 +57,7 @@ class CartController extends Controller
 		Cart::update($rowId, ['qty'=>$quantity, 'options'=>['content'=>$request->input("content.$rowId")]]);
 
 		endforeach;
-
+session()->flash("flash_success", "Your Cart has been Updated");
 		return(back());
 	}
 
