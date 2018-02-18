@@ -7,28 +7,29 @@
 
 
 
-<table>
-       		<tr>
-           		<td>Order id</td>
-           		<td>Date</td>
-				<td>Order Total</td>
-				<td>Order status</td>
-     		<td>Close order</td>
+<div class="container">
+  <div class="row">
+           		<div class="col"><strong>Order Id</strong></div>
+           		<div class="col"><strong>Date</strong></div>
+				<div class="col"><strong>Order Total</strong></div>
+				<div class="col"><strong>Order Status</strong></div>
+				<div class="col"><strong>Close order</strong></div>
 
 
 
-       		</tr>
+       		</div>
           @foreach($orders as $order)
-          <tr>
-            <td>{{$order->Id}}</td>
-            <td>Date</td>
-      <td>{{$order->lineItems->sum('Price')}}</td>
-      <td>{{$order->Status}}</td>
+          <div class="row">
+            <div class="col">#{{$order->Id}} <a href="orderdetails">Order Details</a></div>
+            <div class="col">{{$order->Date}}</div>
+      <div class="col">${{$order->Total}}</div>
+      <div class="col">{{$order->Status}}</div>
 
-            <td>Close order</td>
-          </tr>
+            <div class="col">Close order</div>
+          </div>
           @endforeach
-</table>
+  </div>
+</div>
 
             <!--- End Body code --->
 		</div>

@@ -9,7 +9,7 @@ class Order extends Model
         protected $table = 'Order';
         public $timestamps = false;
         protected $fillable = [
-            'Customer_id','Status','Product_content'
+            'Customer_id','Status','Product_content','Date', 'Total',
         ];
 
         public function lineItems()

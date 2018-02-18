@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class OrderController extends Controller
+class OrderDetailsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,15 +13,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-      if(\Auth::user()->customer)
-      {
-        $orders =  \Auth::user()->customer->orders;
-      }
-      else
-      {
-        $orders = \App\Order::get();
-      }
-        return view('orders',['orders'=>$orders]);
+        return view ("orderdetails");
     }
 
     /**
@@ -43,33 +35,6 @@ class OrderController extends Controller
     public function store(Request $request)
     {
         //
-
-        $order = \App\Order::create([
-          'Customer_id'=>\Auth::user()->customer->Id,
-          'Status'=>'Processing',
-		  'Date'=>date('Y-m-d H:i:s'),
-		  'Total'=>\Cart::total(),
-
-
-        ]);
-        $order->save();
-
-        foreach(\Cart::content() as $row)
-        {
-
-          $lineItem = \App\LineItem::create([
-            'Order_Id'=>$order->id,
-            'Product_Id'=>$row->id,
-            'Quantity'=>$row->qty,
-
-            'Price'=>$row->price,
-            'Product_Content'=>$row->options['content']
-
-          ]);
-          $lineItem->save();
-        }
-        \Cart::destroy();
-        return redirect('orders');
     }
 
     /**

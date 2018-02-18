@@ -2,67 +2,72 @@
 @section('content')
 			<form method="post">
 			{{ csrf_field() }}
-        	<table>
-   	<thead>
-       	<tr>
-           	<th>Product</th>
-           	<th>Qty</th>
-			<th> </th>
-			<th>Product Content</th>
-           	<th>Price</th>
-			<th></th>
-           	<th>Subtotal</th>
-       	</tr>
-   	</thead>
-
-   	<tbody>
+<div class="container">
+  <div class="row align-items-center">
+           	<div class="col"><strong>Product</strong></div>
+           	<div class="col"><strong>Qty</strong></div>
+			<div class="col"><strong> </strong></div>
+			<div class="col"><strong>Product Content</strong></div>
+           	<div class="col"><strong>Price</strong></div>
+           	<div class="col"><strong>Subtotal</strong></div>
+			<div class="col"></div>
+	</div>
+	
 
    		<?php foreach(Cart::content() as $row) :?>
 
 
-       		<tr>
-           		<td>
-               		<p><strong><?php echo $row->name; ?></strong></p>
-					<p><img src="" /></p>
-               		<p><?php echo ($row->options->has('size') ? $row->options->size : ''); ?></p>
-           		</td>
-           		<td><input name="row[{{$row->rowId}}]" type="text" value="<?php echo $row->qty; ?>"></td>
+       		<div class="row">
+           		<div class="col"><strong><?php echo $row->name; ?></strong><img src="" /></div>
+           		<div class="col"><input name="row[{{$row->rowId}}]" type="text" size="5" value="<?php echo $row->qty; ?>"></div>
+				<div class="col"><button type="submit">Update Cart</button></div>
+				<div class="col"><textarea name="content[{{$row->rowId}}]" type="text" maxlength="150" placeholder="Enter your content here. Max 150 characters">{{isset($row->options['content']) ? $row->options['content'] : ''}}</textarea></div>
+           		<div class="col">$<?php echo $row->price; ?></div>
+           		<div class="col">$<?php echo round($row->total, 2); ?></div>
+				<div class="col"></div>
 
-				<td><button type="submit">Update Cart</button>
-
-				<td><textarea name="content[{{$row->rowId}}]" type="text" maxlength="150" placeholder="Enter your content here. Max 150 characters">{{isset($row->options['content']) ? $row->options['content'] : ''}}</textarea></td>
-
-           		<td>$<?php echo $row->price; ?></td>
-				<td></td>
-           		<td>$<?php echo round($row->total, 2); ?></td>
-
-       		</tr>
+       		</div>
 
 	   	<?php endforeach;?>
 		</form>
-   	</tbody>
+
 		<form method="post" action="orders">	{{ csrf_field() }}
-   	<tfoot>
-   		<tr>
-   			<td colspan="5">&nbsp;</td>
-   			<td><strong>Subtotal</strong></td>
-   			<td>$<?php echo Cart::subtotal(); ?></td>
-   		</tr>
-   		<tr>
-   			<td colspan="5">&nbsp;</td>
-   			<td><strong>Tax</strong></td>
-   			<td>$<?php echo Cart::tax(); ?></td>
-   		</tr>
-   		<tr>
-   			<td colspan="5">&nbsp;</td>
-   			<td><strong>Total</strong></td>
-   			<td>$<?php echo Cart::total(); ?></td>
-   		</tr>
-		<tr>
-			<td colspan="5">&nbsp;</td>
-			<td><a class="btn btn-primary" href="payment">Place Order</a>
-		</tr>
-   	</tfoot>
-</table>
+
+   		<div class="row">
+   			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+   			<div class="col"><strong>Subtotal</strong></div>
+   			<div class="col">$<?php echo Cart::subtotal(); ?></div>
+   		</div>
+   		<div class="row">
+   			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+   			<div class="col"><strong>Tax</strong></div>
+   			<div class="col">$<?php echo Cart::tax(); ?></div>
+   		</div>
+   		<div class="row">
+   			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+   			<div class="col"><strong>Total</strong></div>
+   			<div class="col">$<?php echo Cart::total(); ?></div>
+   		</div>
+		<div class="row">
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"></div>
+			<div class="col"><a class="btn btn-primary" href="payment">Place Order</a>
+		</div>
+</div>
 </form>
 @endsection

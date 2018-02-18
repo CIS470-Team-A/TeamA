@@ -23,6 +23,7 @@ Route::resource('user','UserController');
 Route::resource('shoppingcart','CartController');
 Route::resource('index','IndexController');
 Route::resource('register','RegisterController');
+Route::resource('orderdetails','OrderDetailsController');
 /*Route::resource('','');*/
 
 Auth::routes();
