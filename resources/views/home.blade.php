@@ -27,14 +27,14 @@
         <br>
         <br>
 					<h2>Update Your Information!</h2>
-					<form action= "/insert" method="post">
+					<form method="post">
 					{{csrf_field()}}
-					<p>First Name:<br><input type="text" name="firstname"></p>
-					<p>Last Name:<br><input type="text" name="lastname"></p>
-					<p>Address:<br><input type="text" name="Address"></p>
-					<p>Phone Number:<br><input type="text" name="mobile"></p>
-					<p>City:<br><input type="text" name="City"></p>
-					<p>State:<br><input type="text" name="State"></p>
+					<p>First Name:<br><input type="text" name="First_Name" value="{{$contactDetails->First_Name}}"></p>
+					<p>Last Name:<br><input type="text" name="Last_Name" value="{{$contactDetails->Last_Name}}"></p>
+					<p>Address:<br><input type="text" name="Address" value="{{$contactDetails->Address}}"></p>
+					<p>Phone Number:<br><input type="text" name="Phone_Num" value="{{$contactDetails->Phone_Num}}"></p>
+					<p>City:<br><input type="text" name="City" value="{{$contactDetails->City}}"></p>
+					<p>State:<br><input type="text" name="State" value="{{$contactDetails->State}}"></p>
 					<p><input type="submit" value="Update" name="submit"></p>
 					</form><br><br>
 

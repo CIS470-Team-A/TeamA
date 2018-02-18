@@ -28,6 +28,7 @@ Route::resource('register','RegisterController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::post('/home', 'HomeController@store')->name('home_store');
 /*Route::get('/', function(){
   return view('insertForm');
 });*/
