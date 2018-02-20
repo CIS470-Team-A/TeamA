@@ -1,46 +1,59 @@
 @extends('Template')
 
 @section('content')
-<div class="container">
-  <div class="row">
-           		<div class="col"><strong>Order Id</strong></div>
-           		<div class="col"><strong>Date</strong></div>
-				<div class="col"><strong>Order Total</strong></div>
-				<div class="col"><strong>Order Status</strong></div>
-				<div class="col"><strong></strong></div>
+<table class="table">
+  <thead>
+		<th scope="col">Order Id</th>
+		<th scope="col">Date</th>
+		<th scope="col">Order Total</th>
+		<th scope="col">Order Status</th>
+		<th scope="col">Payment Type</th>
+		<th scope="col">Payment Amount</th>
 
 
 
-       		</div>
-	          <div class="row">
-            <div class="col">#{{$order->Id}}</div>
-            <div class="col">{{$order->Date}}</div>
-      <div class="col">${{$order->Total}}</div>
-      <div class="col">{{$order->Status}}</div>
-			<div class="col"></div>
-          </div>
-  <div class="row align-items-center">
-           	<div class="col"><strong>Product</strong></div>
-           	<div class="col"><strong>Qty</strong></div>
-			<div class="col"><strong>Product Content</strong></div>
-           	<div class="col"><strong>Price</strong></div>
-           	<div class="col"><strong>Subtotal</strong></div>
+    </thead>
+	
+		
+	
+		
+	
+	<tbody>
+		<td>#{{$order->Id}}</td>
+		<td>{{$order->Date}}</td>
+		<td>${{$order->Total}}</td>
+		<td>{{$order->Status}}</td>
+		
+		<td>@if($order->Payment_Type=="BillonDelivery")Bill on Delivery</td>
+	@elseif($order->Payment_Type=="Billing")
+		<td>Billing
+		@endif</td>
+		<td>${{round($order->Payment_Amount,2)}}</td>
+    </tbody>
+</table>
+  <table class="table">
+	<thead>
+           	<th scope="col">Product</th>
+           	<th scope="col">Qty</th>
+			<th scope="col">Product Content</th>
+           	<th scope="col">Price</th>
+           	<th scope="col">Total</th>
 
-	</div>
-
+	</thead>
+	<tbody>
 		  
 		  @foreach($order->lineItems as $lineItem)
-	  <div class="row align-items-center">
-           	<div class="col">{{$lineItem->product->ProductName}}</div>
-           	<div class="col">{{$lineItem->Quantity}}</div>
-			<div class="col">{{$lineItem->Product_Content}}</div>
-			<div class="col">${{$lineItem->Price}}</div>
-           	<div class="col">${{$lineItem->Price*$lineItem->Quantity}}</div>
-</div>
+	  
+           	<td>{{$lineItem->product->ProductName}}</td>
+           	<td>{{$lineItem->Quantity}}</td>
+			<td>{{$lineItem->Product_Content}}</td>
+			<td>${{$lineItem->Price}}</td>
+           	
+</td>
 			@endforeach
-	
-
-		</div>
+	<td>${{$order->Total}}</td>
+	</tbody>
+</table>
 
 </body>
 </html>
