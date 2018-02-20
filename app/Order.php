@@ -10,7 +10,7 @@ class Order extends Model
         public $timestamps = false;
 		protected $primaryKey ="Id";
         protected $fillable = [
-            'Customer_id','Status','Product_Content','Date', 'Total',
+            'Customer_id','Status','Product_Content','Date', 'Total', 'Payment_Amount', 'Payment_Type',
         ];
 
         public function lineItems()

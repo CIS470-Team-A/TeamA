@@ -20,6 +20,7 @@ Route::resource('employee','EmployeeController');
 Route::resource('orders','OrderController');
 Route::get('/order', 'OrderController@show')->name('orderdetails');
 Route::put('/order', 'OrderController@edit')->name('orderclose');
+Route::post('loadOrder', 'OrderController@load')->name('loadOrder');
 Route::resource('payment','PaymentController');
 Route::resource('user','UserController');
 Route::resource('shoppingcart','CartController');

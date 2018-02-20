@@ -48,12 +48,29 @@ class OrderController extends Controller
 		}else{
 			$customer=$request->get('customer');
 		}
+		if($request->get('paymentType')== 'BillonDelivery'){
+			$paymentAmount=(\Cart::total()*.1);
+		}
+		else{
+			$paymentAmount=(\Cart::total());
+		}
+		if(session('orderId')){
+			$order= \App\Order::find(session('orderId'));
+			$order->Customer_id=$customer;
+			$order->Total=\Cart::total();
+		  $order->Payment_Type=$request->get('paymentType');
+		  $order->Payment_Amount=$paymentAmount;
+		  session()->forget('orderId');
+		}else{
         $order = \App\Order::create([
           'Customer_id'=>$customer,
           'Status'=>'Processing',
 		  'Date'=>date('Y-m-d H:i:s'),
-		  'Total'=>\Cart::total()
+		  'Total'=>\Cart::total(),
+		  'Payment_Type'=>$request->get('paymentType'),
+		  'Payment_Amount'=>$paymentAmount,
 		  ]);
+		}
 
         $order->save();
 
@@ -114,7 +131,12 @@ class OrderController extends Controller
         $orders = \App\Order::get();
       }
 	  $order = $orders->where('Id', $request->get('id'))->first();
-	  $order->Status = "Delivered";
+	  if($order->Status=="Processing"){
+		$order->Status="Validated";
+		}
+		elseif($order->Status=="Validated"){
+		  $order->Status = "Delivered";
+	  }
 	  $order->save();
 	  return back();
     }
@@ -130,7 +152,26 @@ class OrderController extends Controller
     {
         //
     }
-
+    public function load(Request $request)
+    {
+        if(\Auth::user()->customer)
+      {
+        $orders =  \Auth::user()->customer->orders;
+      }
+      else
+      {
+        $orders = \App\Order::get();
+      }
+	  $order = $orders->where('Id', $request->get('orderId'))->first();
+	  \Cart::destroy();
+	  foreach($order->lineItems as $lineItem)
+	  {
+		  \Cart::add($lineItem->Product_Id, $lineItem->product->ProductName, $lineItem->Quantity, $lineItem->Price, ['content'=>$lineItem->Product_Content]);
+		  
+	  }
+	  session()->put('orderId', $request->get('orderId'));
+	  return redirect(route('shoppingcart.index'));
+    }
     /**
      * Remove the specified resource from storage.
      *

@@ -18,11 +18,11 @@
 
 
 <label class="radio">
-<input type="radio" name="paymentType" value="1" />
+<input type="radio" name="paymentType" value="Billing" />
 <strong>Billing</strong>
 </label>
 <label class="radio">
-<input type="radio" name="paymentType" value="3" />
+<input type="radio" name="paymentType" value="BillonDelivery" />
 <strong>Bill On Delivery</strong> (10% Down now) $<?php echo round(Cart::total()* .1, 2); ?>
 </label>
 			@if(\Auth::user())
