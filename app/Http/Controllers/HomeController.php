@@ -39,7 +39,7 @@ class HomeController extends Controller
     'First_Name' => 'required|string|max:25',
     'Last_Name' => 'required|string|max:25',
     'Address' => 'required|string|max:45',
-    'Phone_Num' => 'required|integer',
+    'Phone_Num' => 'required|string|max:16',
     'City' => 'required|string|max:25',
     'State' => 'required|string|max:2',
       ]);

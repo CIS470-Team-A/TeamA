@@ -28,7 +28,7 @@ CREATE TABLE `customer` (
   `First_Name` varchar(25) NOT NULL,
   `Last_Name` varchar(25) NOT NULL,
   `Address` varchar(45) NOT NULL,
-  `Phone_Num` int(10) DEFAULT NULL,
+  `Phone_Num` varchar(16) DEFAULT NULL,
   `City` varchar(25) NOT NULL,
   `State` char(2) NOT NULL,
   PRIMARY KEY (`Id`),
@@ -36,7 +36,7 @@ CREATE TABLE `customer` (
   UNIQUE KEY `Id_UNIQUE` (`Id`),
   KEY `fk_Customer_User1_idx` (`User_Id`),
   CONSTRAINT `fk_Customer_User1` FOREIGN KEY (`User_Id`) REFERENCES `users` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -45,7 +45,7 @@ CREATE TABLE `customer` (
 
 LOCK TABLES `customer` WRITE;
 /*!40000 ALTER TABLE `customer` DISABLE KEYS */;
-INSERT INTO `customer` VALUES (5,5,'Tifa','Lockheart','213 Circle Way',2147483647,'Nibelheim','MI'),(6,6,'Cloud','Strife','534 Circle Way',2147483647,'Nibelheim','MI'),(7,7,'Barret','Wallace','143 6th District',1238458742,'Midgar','MD'),(8,8,'Cid','Highwind','154 Rocket Way',1679854454,'Rocket Town','WA'),(9,11,'Louis','Belcher','',0,'',''),(10,12,'Parsley','Adams','123 way',1234567890,'place','mo');
+INSERT INTO `customer` VALUES (5,5,'Tifa','Lockheart','213 Circle Way','2147483647','Nibelheim','MI'),(6,6,'Cloud','Strife','534 Circle Way','2147483647','Nibelheim','MI'),(7,7,'Barret','Wallace','143 6th District','1238458742','Midgar','MD'),(8,8,'Cid','Highwind','154 Rocket Way','8165554444','Rocket Town','WA');
 /*!40000 ALTER TABLE `customer` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -104,7 +104,7 @@ CREATE TABLE `lineitems` (
   KEY `fk_LineItems_Products1_idx` (`Product_Id`),
   CONSTRAINT `fk_LineItems_Order1` FOREIGN KEY (`Order_Id`) REFERENCES `order` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_LineItems_Products1` FOREIGN KEY (`Product_Id`) REFERENCES `products` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=35 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -113,7 +113,6 @@ CREATE TABLE `lineitems` (
 
 LOCK TABLES `lineitems` WRITE;
 /*!40000 ALTER TABLE `lineitems` DISABLE KEYS */;
-INSERT INTO `lineitems` VALUES (25,33,2,1,25.99,'adfas'),(26,33,3,1,39.99,'fasdfsd'),(27,34,1,1,15.99,'adfasdf'),(28,34,3,1,39.99,'adfasdfa'),(29,35,3,1,39.99,'adfadsaf'),(30,35,1,1,15.99,'adfafdaf'),(31,35,4,1,25.99,'adfadfhjfgd'),(32,36,1,1,15.99,'stuff'),(33,37,2,1,25.99,'asdfadsf'),(34,37,1,1,15.99,'adfadsfad');
 /*!40000 ALTER TABLE `lineitems` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -130,11 +129,13 @@ CREATE TABLE `order` (
   `Status` varchar(45) NOT NULL,
   `Date` varchar(45) DEFAULT NULL,
   `Total` double DEFAULT NULL,
+  `Payment_Type` varchar(45) DEFAULT NULL,
+  `Payment_Amount` double DEFAULT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE KEY `Id_UNIQUE` (`Id`),
   KEY `fk_Order_Customer1_idx` (`Customer_Id`),
   CONSTRAINT `fk_Order_Customer1` FOREIGN KEY (`Customer_Id`) REFERENCES `customer` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=38 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=46 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -143,39 +144,7 @@ CREATE TABLE `order` (
 
 LOCK TABLES `order` WRITE;
 /*!40000 ALTER TABLE `order` DISABLE KEYS */;
-INSERT INTO `order` VALUES (32,6,'Delivered','2018-02-18 16:20:37',0),(33,10,'Processing','2018-02-18 16:40:55',79.84),(34,10,'Processing','2018-02-18 16:41:41',67.74),(35,10,'Processing','2018-02-18 16:57:48',99.18),(36,10,'Processing','2018-02-18 17:03:07',19.35),(37,10,'Processing','2018-02-18 17:03:53',50.8);
 /*!40000 ALTER TABLE `order` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `payment`
---
-
-DROP TABLE IF EXISTS `payment`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `payment` (
-  `Id` int(11) NOT NULL AUTO_INCREMENT,
-  `Customer_Id` int(11) NOT NULL,
-  `Order_Id` int(11) NOT NULL,
-  `PaymentType_Id` int(11) NOT NULL,
-  `Payment_Amount` decimal(10,2) NOT NULL,
-  PRIMARY KEY (`Id`),
-  UNIQUE KEY `Id_UNIQUE` (`Id`),
-  KEY `fk_Payment_Customer1_idx` (`Customer_Id`),
-  KEY `fk_Payment_Order1_idx` (`Order_Id`),
-  CONSTRAINT `fk_Payment_Customer1` FOREIGN KEY (`Customer_Id`) REFERENCES `customer` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_Payment_Order1` FOREIGN KEY (`Order_Id`) REFERENCES `order` (`Id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `payment`
---
-
-LOCK TABLES `payment` WRITE;
-/*!40000 ALTER TABLE `payment` DISABLE KEYS */;
-/*!40000 ALTER TABLE `payment` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -257,7 +226,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`Id`),
   UNIQUE KEY `User_Name_UNIQUE` (`email`),
   UNIQUE KEY `Id_UNIQUE` (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -266,7 +235,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'chris.redfield@gmail.com','$2y$10$3iR.2qkKgfh86eMtLNKUHe7o.U6fS9DiEPZLqvllE/hvU24I5ifrW','hy5WNNIEsHJSPnmJSywnOjAM8EPjoeekTVGPYYSAOiSwBgaz5suL492eR30G','Chris Redfield','2018-02-08 04:31:41','2018-02-08 04:31:41'),(2,'jill.valentine@hotmail.com','$2y$10$5y4dL6H7pm/yxqhtGOujueuxXlf3z33mEaILnpKhNxpWTlVQ/1QCe','3Fd9dBJfAa4SFG2n2Te5oV2MlR9mnrB1DIRKjOyiG4pzAyCt47KWZtJT8TtJ','Jill Valentine','2018-02-08 04:32:20','2018-02-08 04:32:20'),(3,'carlos.rivera@ymail.com','$2y$10$hyLoKAz/YvD6OgmlRVxZfeAsKvKtJd3.CZb2Xs/RUvRLVh8K9gKfy','bFYnwdRULETxbQnPUw3Ps3T6UTYq4cobRNvsmAdKPWthR61usW5MSFYxH5kc','Carlos Rivera','2018-02-08 04:32:50','2018-02-08 04:32:50'),(4,'Leon.kennedy@yahoo.com','$2y$10$rbU8kjYix7om0TBiqAGVnuN2vntfamaqZyusstR4X2U/t83pk9zWu','LNtCGnUS45Bfk5ARgNe0SwO7EyC6SH4vjBVAS4obMOXGJzoiGWbUb1RbwPQa','Leon Kennedy','2018-02-08 04:33:31','2018-02-08 04:33:31'),(5,'tifa.lockheart@gmail.com','$2y$10$P/phm3lZ8mqf7n1k3JWAi.G1/ui1VETXfYVuCsl0qLmhmh8X9D2hO','fs2QInkvymmSkdBApWMAL50OBMLDdFCZ4sHzBKFgvEhEk02KayGF5C61yxoL','Tifa Lockheart','2018-02-08 04:34:04','2018-02-08 04:34:04'),(6,'cloud.strife@yahoo.com','$2y$10$P4jYSFhygfU50juCc20VD.LA4owJWHACNmHmR9.XJqk0GlIY8sGPm','lf1df5i2i5SPF4qPYiFnqSIbyNjVJPNsmr61FZBsv8so8cx3y0g5zBQ1JCem','Cloud Stife','2018-02-08 04:34:36','2018-02-08 04:34:36'),(7,'barret.wallace@ymail.com','$2y$10$rFJq3SHDpAREZTxHOpAnje3qjNs6S2iZsdzqXGCeMkYFgLtNfgDJK','zzJiwXDNFluJYwqDpBUl1VZ4IUwqu9QmtTeOAz97zecV0tjhb1TWIBlzNg4B','Barret Wallace','2018-02-08 04:35:17','2018-02-08 04:35:17'),(8,'cid.highwind@hotmail.com','$2y$10$8cJRgcZmJGQNoA9Hst3j3O8y1WNf8jaN6XOoi/8WKJqeR8HaeSIuC','mrQNPGX0TzhJ4vLQddp8z4l73jejPaXH3ApNrYDqFH7TNKBeM4AmgB9iTVU2','Cid Highwind','2018-02-08 04:35:42','2018-02-08 04:35:42'),(9,'test@test.com','$2y$10$7FcfOO6lkul6Bn1DBTAtBu8G71FSNM9fYaKqyaFmh4KxisAyaEuSu','XWSbXsnXQrGHsIcQnIc9S1CxA420KY7itT9Fc3RHYrRun5tD1guOssoBpStg','test','2018-02-16 04:20:17','2018-02-16 04:20:17'),(10,'Testing@123.com','$2y$10$AA0oODW3rfkByk/iSQtvG.UWA44aN5WPF57oaMsxgaeZUJBxegTfC','D49YyqzP8MjWdGKmiPFz6ebeJ39HVsCpwPYiLLuinaf0kvVja2EqAI4Uhjpa','Testing','2018-02-17 18:33:20','2018-02-17 18:33:20'),(11,'evil@louis.com','$2y$10$NbksIdMHL/6sfkcx7oGnROAlGDuHLnY9yOKMa.AbDgOXfU9G8aKRq','QF7ZaruJ7UYU3WOEcXmXNPUXuX8UdyvpHQ3xpNFBmGdJCYagOlmbs3KrWHbD',NULL,'2018-02-18 03:01:44','2018-02-18 03:01:44'),(12,'Padams@something.com','$2y$10$OxWeBfoUbeyk0L6GaVDDK.JX8auis.Fr.dl/M6SCoANkRjR.KiifW',NULL,NULL,'2018-02-18 16:30:22','2018-02-18 16:30:22');
+INSERT INTO `users` VALUES (1,'chris.redfield@gmail.com','$2y$10$3iR.2qkKgfh86eMtLNKUHe7o.U6fS9DiEPZLqvllE/hvU24I5ifrW','jnCqNjeITj0SymXMZSWXX0gO2KBwQ1g1TFCt7mEt8kzDlSslh9XoBYgYPo90','Chris Redfield','2018-02-08 04:31:41','2018-02-08 04:31:41'),(2,'jill.valentine@hotmail.com','$2y$10$5y4dL6H7pm/yxqhtGOujueuxXlf3z33mEaILnpKhNxpWTlVQ/1QCe','3Fd9dBJfAa4SFG2n2Te5oV2MlR9mnrB1DIRKjOyiG4pzAyCt47KWZtJT8TtJ','Jill Valentine','2018-02-08 04:32:20','2018-02-08 04:32:20'),(3,'carlos.rivera@ymail.com','$2y$10$hyLoKAz/YvD6OgmlRVxZfeAsKvKtJd3.CZb2Xs/RUvRLVh8K9gKfy','bFYnwdRULETxbQnPUw3Ps3T6UTYq4cobRNvsmAdKPWthR61usW5MSFYxH5kc','Carlos Rivera','2018-02-08 04:32:50','2018-02-08 04:32:50'),(4,'Leon.kennedy@yahoo.com','$2y$10$rbU8kjYix7om0TBiqAGVnuN2vntfamaqZyusstR4X2U/t83pk9zWu','LNtCGnUS45Bfk5ARgNe0SwO7EyC6SH4vjBVAS4obMOXGJzoiGWbUb1RbwPQa','Leon Kennedy','2018-02-08 04:33:31','2018-02-08 04:33:31'),(5,'tifa.lockheart@gmail.com','$2y$10$P/phm3lZ8mqf7n1k3JWAi.G1/ui1VETXfYVuCsl0qLmhmh8X9D2hO','fs2QInkvymmSkdBApWMAL50OBMLDdFCZ4sHzBKFgvEhEk02KayGF5C61yxoL','Tifa Lockheart','2018-02-08 04:34:04','2018-02-08 04:34:04'),(6,'cloud.strife@yahoo.com','$2y$10$P4jYSFhygfU50juCc20VD.LA4owJWHACNmHmR9.XJqk0GlIY8sGPm','lf1df5i2i5SPF4qPYiFnqSIbyNjVJPNsmr61FZBsv8so8cx3y0g5zBQ1JCem','Cloud Stife','2018-02-08 04:34:36','2018-02-08 04:34:36'),(7,'barret.wallace@ymail.com','$2y$10$rFJq3SHDpAREZTxHOpAnje3qjNs6S2iZsdzqXGCeMkYFgLtNfgDJK','zzJiwXDNFluJYwqDpBUl1VZ4IUwqu9QmtTeOAz97zecV0tjhb1TWIBlzNg4B','Barret Wallace','2018-02-08 04:35:17','2018-02-08 04:35:17'),(8,'cid.highwind@hotmail.com','$2y$10$8cJRgcZmJGQNoA9Hst3j3O8y1WNf8jaN6XOoi/8WKJqeR8HaeSIuC','wgqNoX4o5z4NrrY1jsJRYcxo3s3i8IBxAMmG5lHA3VZQgwatUYOfw8TCcn5G','Cid Highwind','2018-02-08 04:35:42','2018-02-08 04:35:42');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -279,4 +248,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-02-18 11:20:20
+-- Dump completed on 2018-02-20 21:53:21
