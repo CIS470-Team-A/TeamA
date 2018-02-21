@@ -10,7 +10,8 @@
 		@else
 			<th scope="col">Customer Name</th>
 			<th scope="col">Modify Order</th>
-			<th scope="col">Close order</th>
+			<th scope="col">Validate Order</th>
+			<th scope="col">Close Order</th>
 		@endif
 	</thead>
 	@foreach($orders as $order)

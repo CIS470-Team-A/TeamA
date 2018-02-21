@@ -54,13 +54,16 @@ class OrderController extends Controller
 		else{
 			$paymentAmount=(\Cart::total());
 		}
+		
 		if(session('orderId')){
+			
 			$order= \App\Order::find(session('orderId'));
 			$order->Customer_id=$customer;
 			$order->Total=\Cart::total();
 		  $order->Payment_Type=$request->get('paymentType');
 		  $order->Payment_Amount=$paymentAmount;
 		  session()->forget('orderId');
+		    $order->lineItems()->delete();
 		}else{
         $order = \App\Order::create([
           'Customer_id'=>$customer,

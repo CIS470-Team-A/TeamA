@@ -23,11 +23,11 @@
 		<td>{{$order->Date}}</td>
 		<td>${{$order->Total}}</td>
 		<td>{{$order->Status}}</td>
-		
-		<td>@if($order->Payment_Type=="BillonDelivery")Bill on Delivery</td>
+		@if($order->Payment_Type=="BillonDelivery")
+		<td>Bill on Delivery</td>
 	@elseif($order->Payment_Type=="Billing")
-		<td>Billing
-		@endif</td>
+		<td>Billing</td>
+		@endif
 		<td>${{round($order->Payment_Amount,2)}}</td>
     </tbody>
 </table>
@@ -49,10 +49,15 @@
 			<td>{{$lineItem->Product_Content}}</td>
 			<td>${{$lineItem->Price}}</td>
            	
-</td>
+<td></td>
+</tbody>
 			@endforeach
+			<td></td>
+			<td></td>
+			<td></td>
+			<td></td>
 	<td>${{$order->Total}}</td>
-	</tbody>
+	
 </table>
 
 </body>

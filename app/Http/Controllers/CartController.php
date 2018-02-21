@@ -53,9 +53,12 @@ class CartController extends Controller
     public function store(Request $request)
     {
 		foreach($request->input("row") as $rowId=>$quantity):
-
-		Cart::update($rowId, ['qty'=>$quantity, 'options'=>['content'=>$request->input("content.$rowId")]]);
-
+		if($quantity == "0" || $quantity==""){
+			Cart::remove($rowId);
+		}else{
+			
+			Cart::update($rowId, ['qty'=>$quantity, 'options'=>['content'=>$request->input("content.$rowId")]]);
+		}
 		endforeach;
 session()->flash("flash_success", "Your Cart has been Updated");
 		return(back());
